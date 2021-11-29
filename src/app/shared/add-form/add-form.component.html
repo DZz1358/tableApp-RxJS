@@ -1,0 +1,28 @@
+<form>
+    <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="First name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput placeholder="Last name">
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field> -->
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Select</mat-label>
+        <mat-select>
+            <mat-option value="one">Male</mat-option>
+            <mat-option value="two">Female</mat-option>
+            <mat-option value="two">Not specified</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Primary</button>
+</form>
