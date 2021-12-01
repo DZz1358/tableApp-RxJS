@@ -20,6 +20,7 @@ import { AddToListComponent } from './shared/add-to-list/add-to-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
+  { path: '', component: TableComponent },
   { path: 'list', component: TableComponent },
   { path: 'add', component: AddFormComponent }
 ]
