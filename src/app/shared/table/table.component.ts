@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PEOPLE } from 'src/app/mocks/peoples.mock';
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',

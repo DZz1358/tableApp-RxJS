@@ -1,28 +1,23 @@
-<form>
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
         <mat-label>First name</mat-label>
-        <input matInput placeholder="First name">
+        <input matInput placeholder="First name" formControlName="firstName">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Last name</mat-label>
-        <input matInput placeholder="Last name">
+        <input matInput placeholder="Last name" formControlName="lastName">
     </mat-form-field>
-    <!-- <mat-form-field appearance="outline">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field> -->
     <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email">
+        <input matInput placeholder="Qwerty@gx.com" formControlName="email">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Select</mat-label>
-        <mat-select>
-            <mat-option value="one">Male</mat-option>
-            <mat-option value="two">Female</mat-option>
-            <mat-option value="two">Not specified</mat-option>
+        <mat-select formControlName="gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Not specified">Not specified</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button [disabled]="!addUserForm.valid" color="primary">Primary</button>
 </form>

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table'
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -16,6 +17,7 @@ import { BtnComponent } from './shared/btn/btn.component';
 import { AddFormComponent } from './shared/add-form/add-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AddToListComponent } from './shared/add-to-list/add-to-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'list', component: TableComponent },
@@ -39,7 +41,9 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [
   ],
