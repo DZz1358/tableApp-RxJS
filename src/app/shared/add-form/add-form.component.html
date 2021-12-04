@@ -19,5 +19,5 @@
             <mat-option value="Not specified">Not specified</mat-option>
         </mat-select>
     </mat-form-field>
-    <button mat-raised-button [disabled]="!addUserForm.valid" color="primary">Primary</button>
+    <button (click)='action()' mat-raised-button [disabled]="!addUserForm.valid" color="primary">Primary</button>
 </form>

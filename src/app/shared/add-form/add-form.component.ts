@@ -1,5 +1,8 @@
+import { PeopleService } from './../../services/people.service';
+import { PEOPLE } from 'src/app/mocks/peoples.mock';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-form',
@@ -7,6 +10,9 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-form.component.scss']
 })
 export class AddFormComponent implements OnInit {
+
+  people = PEOPLE;
+
 
   addUserForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -16,12 +22,21 @@ export class AddFormComponent implements OnInit {
     gender: new FormControl('', Validators.required)
   });
 
-  constructor() { }
+  constructor(
+    private peopleService: PeopleService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.warn(this.addUserForm.value);
+    this.peopleService.addPeople(this.addUserForm.value);
+    // console.log(this.addUserForm.value);
+  }
+
+
+  action() {
+    this.router.navigate(['/list'])
   }
 }
