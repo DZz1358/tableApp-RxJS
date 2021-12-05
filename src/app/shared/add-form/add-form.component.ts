@@ -1,5 +1,5 @@
+import { PEOPLE } from './../../mocks/peoples.mock';
 import { PeopleService } from './../../services/people.service';
-import { PEOPLE } from 'src/app/mocks/peoples.mock';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -28,15 +28,17 @@ export class AddFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.addId()
+
   }
 
   onSubmit() {
     this.peopleService.addPeople(this.addUserForm.value);
-    // console.log(this.addUserForm.value);
+    this.router.navigate(['/list']);
   }
 
-
-  action() {
-    this.router.navigate(['/list'])
+  addId() {
+    let last = this.people[this.people.length - 1]
+    console.log(last.id);
   }
 }
