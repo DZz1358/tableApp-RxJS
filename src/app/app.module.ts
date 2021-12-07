@@ -18,6 +18,7 @@ import { AddFormComponent } from './shared/add-form/add-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AddToListComponent } from './shared/add-to-list/add-to-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    HttpClientModule,
     MatTableModule,
     MatSelectModule,
     MatInputModule,
