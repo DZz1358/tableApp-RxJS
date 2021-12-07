@@ -15,5 +15,8 @@ export class PeopleService {
   addPeople(member: any): any {
     this.people.push(member);
   }
+  getPeople(): any {
+    return this.people;
+  }
 
 }

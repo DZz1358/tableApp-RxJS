@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
   { path: 'list', component: TableComponent },
-  { path: 'add', component: AddFormComponent }
+  { path: 'add', component: AddFormComponent },
+  { path: 'add/:id', component: AddFormComponent }
 ]
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PEOPLE } from 'src/app/mocks/peoples.mock';
+import { PeopleService } from './../../services/people.service';
 
 
 @Component({
@@ -9,13 +9,19 @@ import { PEOPLE } from 'src/app/mocks/peoples.mock';
 })
 export class TableComponent implements OnInit {
 
-  people = PEOPLE;
-  // dataSource = PEOPLE;
+  people = this.peopleService.getPeople();
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'gender'];
-  constructor() { }
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'gender', 'edit'];
+  constructor(
+    private peopleService: PeopleService,
+
+  ) { }
 
   ngOnInit(): void {
+
   }
 
+  getMember() {
+    // return this.people.getMember();
+  }
 }

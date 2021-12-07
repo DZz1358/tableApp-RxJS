@@ -1,7 +1,6 @@
-import { PEOPLE } from './../../mocks/peoples.mock';
 import { PeopleService } from './../../services/people.service';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AddFormComponent implements OnInit {
 
-  people = PEOPLE;
+  people = this.peopleService.getPeople();
+  lastItemId = this.people[this.people.length - 1].id;
 
 
   addUserForm = new FormGroup({
@@ -19,17 +19,16 @@ export class AddFormComponent implements OnInit {
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.email,
     Validators.required]),
-    gender: new FormControl('', Validators.required)
+    gender: new FormControl('', Validators.required),
+    id: new FormControl(++this.lastItemId)
   });
 
   constructor(
     private peopleService: PeopleService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    // this.addId()
-
   }
 
   onSubmit() {
@@ -37,8 +36,4 @@ export class AddFormComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 
-  addId() {
-    let last = this.people[this.people.length - 1]
-    console.log(last.id);
-  }
 }
