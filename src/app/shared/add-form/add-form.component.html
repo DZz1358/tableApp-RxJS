@@ -1,22 +1,18 @@
 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
-        <mat-label>First name</mat-label>
-        <input matInput placeholder="First name" formControlName="firstName">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="First name" formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>Last name</mat-label>
-        <input matInput placeholder="Last name" formControlName="lastName">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Qwerty@gx.com" formControlName="email">
+        <mat-label>Country</mat-label>
+        <input matInput placeholder="Country" formControlName="country">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Select</mat-label>
         <mat-select formControlName="gender">
-            <mat-option value="Male">Male</mat-option>
-            <mat-option value="Female">Female</mat-option>
-            <mat-option value="Not specified">Not specified</mat-option>
+            <mat-option></mat-option>
+            <!-- <mat-option value="Female">Female</mat-option>
+            <mat-option value="Not specified">Not specified</mat-option> -->
         </mat-select>
     </mat-form-field>
     <button mat-raised-button [disabled]="!addUserForm.valid" color="primary">Primary</button>

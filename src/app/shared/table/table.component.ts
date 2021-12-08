@@ -11,7 +11,7 @@ export class TableComponent implements OnInit {
 
   people = this.peopleService.getPeople();
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'gender', 'edit'];
+  displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
   constructor(
     private peopleService: PeopleService,
 

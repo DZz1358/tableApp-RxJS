@@ -11,16 +11,14 @@ import { Router } from '@angular/router';
 export class AddFormComponent implements OnInit {
 
   people = this.peopleService.getPeople();
-  lastItemId = this.people[this.people.length - 1].id;
 
 
   addUserForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.email,
-    Validators.required]),
+    name: new FormControl('', Validators.required),
+    country: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
-    id: new FormControl(++this.lastItemId)
+    id: new FormControl(),
+    date: new FormControl(),
   });
 
   constructor(
