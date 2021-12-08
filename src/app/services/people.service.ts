@@ -16,9 +16,11 @@ export class PeopleService {
     private http: HttpClient,
   ) { }
 
-  addPeople(member: any): any {
-    this.people.push(member);
-  }
+  // addPeople(member: any): any {
+  //   this.people.push(member);
+  // }
+  addPeople(): any { }
+
   getPeople(): any {
     return this.http.get(`${environment.apiUrl}/list`);
   }

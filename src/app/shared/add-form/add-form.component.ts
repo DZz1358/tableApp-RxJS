@@ -18,7 +18,7 @@ export class AddFormComponent implements OnInit {
     country: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
     id: new FormControl(),
-    date: new FormControl(),
+    date: new FormControl()
   });
 
   constructor(
