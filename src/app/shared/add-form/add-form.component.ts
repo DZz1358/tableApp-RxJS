@@ -18,19 +18,21 @@ export class AddFormComponent implements OnInit {
     country: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
     id: new FormControl(),
-    date: new FormControl()
+    date: new FormControl(),
   });
 
   constructor(
     private peopleService: PeopleService,
     private router: Router,
+
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    this.peopleService.addPeople(this.addUserForm.value);
+    this.peopleService.addUser(this.addUserForm.value)
+    // this.peopleService.addPeople(this.addUserForm.value);
     this.router.navigate(['/list']);
   }
 
