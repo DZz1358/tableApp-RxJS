@@ -39,6 +39,11 @@ export class AddFormComponent implements OnInit {
       (error: any) => console.log(error, 'err')
     );
   }
+  // setValues() {
+  //   this.addUserForm.patchValue({
+  //     FormGroup: this.updateUser.id
+  //   })
+  // }
 
 
 }

@@ -38,12 +38,7 @@ export class TableComponent implements OnInit {
     return this.http.get(`${environment.apiUrl}/list/${id}`).subscribe(data => {
 
       console.log(data);
-      // setValues()
     });
   }
-  // setValues() {
-  //   this.addUserForm.patchValue({
-  //   })
-  // }
 
 }
