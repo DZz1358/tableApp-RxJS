@@ -41,9 +41,5 @@ export class TableComponent implements OnInit {
       // setValues()
     });
   }
-  // setValues() {
-  //   this.addUserForm.patchValue({
-  //   })
-  // }
 
 }
