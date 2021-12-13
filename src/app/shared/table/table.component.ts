@@ -22,10 +22,21 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  deleteUser() {
-    this.peopleService.deleteUser(this.people.id)
+
+  deleteUser(id: any) {
+    console.log(id);
+
+    this.peopleService.deleteUser(id).subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    });
   }
-  getUser() {
-    return this.http.get(`${environment.apiUrl}/list/id`);
+
+  updateUser(id: any) {
+    return this.http.get(`${environment.apiUrl}/list/${id}`).subscribe(data => {
+
+      console.log(data);
+
+    });
   }
 }

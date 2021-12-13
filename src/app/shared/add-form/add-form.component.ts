@@ -12,13 +12,12 @@ export class AddFormComponent implements OnInit {
 
   people = this.peopleService.getPeople();
 
-
   addUserForm = new FormGroup({
     name: new FormControl('', Validators.required),
     country: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
     id: new FormControl(),
-    date: new FormControl(),
+    date: new FormControl(new Date()),
   });
 
   constructor(
@@ -30,10 +29,14 @@ export class AddFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   onSubmit() {
-    this.peopleService.addUser(this.addUserForm.value)
-    // this.peopleService.addPeople(this.addUserForm.value);
-    this.router.navigate(['/list']);
+    this.peopleService.addUser(this.addUserForm.value).subscribe(
+      (data: any) => {
+        this.router.navigate(['/list']);
+      },
+      (error: any) => console.log(error, 'err')
+    );
   }
 
 }

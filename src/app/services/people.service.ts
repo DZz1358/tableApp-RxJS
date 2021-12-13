@@ -21,7 +21,6 @@ export class PeopleService {
   }
 
   deleteUser(id: any) {
-    const deleteBody = `${environment.apiUrl}/list/${id}`
-    return this.http.delete(deleteBody);
+    return this.http.delete(`${environment.apiUrl}/list/${id}`);
   }
 }

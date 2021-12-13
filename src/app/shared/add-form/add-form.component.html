@@ -1,7 +1,7 @@
 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="First name" formControlName="name">
+        <input matInput placeholder="Name" formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Country</mat-label>
@@ -11,6 +11,5 @@
         <mat-label>Gender</mat-label>
         <input matInput placeholder="Gender" formControlName="gender">
     </mat-form-field>
-
     <button mat-raised-button [disabled]="!addUserForm.valid" color="primary">Primary</button>
 </form>

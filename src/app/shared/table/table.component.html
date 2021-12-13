@@ -29,11 +29,12 @@
     <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-            <button [routerLink]="['/add']" (click)="getUser()" class="btn-table" mat-mini-fab color="primary">
+            <button (click)="updateUser(element.id)" [routerLink]="['/add']" class="btn-table" mat-mini-fab
+                color="primary">
                 <mat-icon>edit</mat-icon>
             </button>
 
-            <button (click)="deleteUser()" class="btn-table" mat-mini-fab color="primary">
+            <button (click)="deleteUser(element.id)" class="btn-table" mat-mini-fab color="primary">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>
