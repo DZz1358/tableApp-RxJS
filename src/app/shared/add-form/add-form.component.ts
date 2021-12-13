@@ -12,6 +12,7 @@ export class AddFormComponent implements OnInit {
 
   people = this.peopleService.getPeople();
 
+
   addUserForm = new FormGroup({
     name: new FormControl('', Validators.required),
     country: new FormControl('', Validators.required),
@@ -38,5 +39,6 @@ export class AddFormComponent implements OnInit {
       (error: any) => console.log(error, 'err')
     );
   }
+
 
 }

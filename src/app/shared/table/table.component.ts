@@ -14,9 +14,12 @@ export class TableComponent implements OnInit {
   people = this.peopleService.getPeople();
 
   displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
+
+
   constructor(
     private peopleService: PeopleService,
     private http: HttpClient,
+
 
   ) { }
 
@@ -27,7 +30,6 @@ export class TableComponent implements OnInit {
     console.log(id);
 
     this.peopleService.deleteUser(id).subscribe(data => {
-      console.log(data);
       window.location.reload();
     });
   }
@@ -36,7 +38,12 @@ export class TableComponent implements OnInit {
     return this.http.get(`${environment.apiUrl}/list/${id}`).subscribe(data => {
 
       console.log(data);
-
+      // setValues()
     });
   }
+  // setValues() {
+  //   this.addUserForm.patchValue({
+  //   })
+  // }
+
 }

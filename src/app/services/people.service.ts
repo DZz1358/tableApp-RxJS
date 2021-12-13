@@ -19,6 +19,9 @@ export class PeopleService {
   getPeople(): any {
     return this.http.get(`${environment.apiUrl}/list`);
   }
+  // updateUser(user: AddFormComponent, id: any): any {
+  //   return this.http.put(`${environment.apiUrl}/list/${id}`, user);
+  // }
 
   deleteUser(id: any) {
     return this.http.delete(`${environment.apiUrl}/list/${id}`);
