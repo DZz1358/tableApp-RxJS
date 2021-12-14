@@ -1,7 +1,9 @@
 import { PeopleService } from './../../services/people.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EventEmitter } from 'stream';
+
 
 @Component({
   selector: 'app-add-form',
@@ -10,8 +12,8 @@ import { Router } from '@angular/router';
 })
 export class AddFormComponent implements OnInit {
 
-  people = this.peopleService.getPeople();
 
+  people = this.peopleService.getPeople();
 
   addUserForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -24,7 +26,6 @@ export class AddFormComponent implements OnInit {
   constructor(
     private peopleService: PeopleService,
     private router: Router,
-
   ) { }
 
   ngOnInit(): void {
@@ -35,15 +36,17 @@ export class AddFormComponent implements OnInit {
     this.peopleService.addUser(this.addUserForm.value).subscribe(
       (data: any) => {
         this.router.navigate(['/list']);
+
       },
       (error: any) => console.log(error, 'err')
     );
   }
-  // setValues() {
-  //   this.addUserForm.patchValue({
-  //     FormGroup: this.updateUser.id
-  //   })
-  // }
 
-
+  editMember(id: any) {
+    this.peopleService.getIdUser(id).subscribe((data) => {
+      this.addUserForm.patchValue(data);
+    })
+  }
 }
+
+

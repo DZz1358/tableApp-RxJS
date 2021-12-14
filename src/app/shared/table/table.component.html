@@ -29,8 +29,7 @@
     <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-            <button (click)="updateUser(element.id)" [routerLink]="['/add' , element.id ]" class="btn-table"
-                mat-mini-fab color="primary">
+            <button [routerLink]="['/add' , element.id ]" class="btn-table" mat-mini-fab color="primary">
                 <mat-icon>edit</mat-icon>
             </button>
 

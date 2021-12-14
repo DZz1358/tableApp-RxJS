@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-
   people = this.peopleService.getPeople();
 
   displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
@@ -27,18 +26,10 @@ export class TableComponent implements OnInit {
   }
 
   deleteUser(id: any) {
-    console.log(id);
-
     this.peopleService.deleteUser(id).subscribe(data => {
       window.location.reload();
     });
   }
 
-  updateUser(id: any) {
-    return this.http.get(`${environment.apiUrl}/list/${id}`).subscribe(data => {
-
-      console.log(data);
-    });
-  }
 
 }
