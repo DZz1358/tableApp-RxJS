@@ -1,8 +1,7 @@
 import { PeopleService } from './../../services/people.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { EventEmitter } from 'stream';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,6 +11,7 @@ import { EventEmitter } from 'stream';
 })
 export class AddFormComponent implements OnInit {
 
+  user: any;
 
   people = this.peopleService.getPeople();
 
@@ -26,9 +26,14 @@ export class AddFormComponent implements OnInit {
   constructor(
     private peopleService: PeopleService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    let userId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.peopleService.getIdUser(userId).subscribe((data) => {
+      this.addUserForm.patchValue(data);
+    })
   }
 
 
@@ -40,12 +45,6 @@ export class AddFormComponent implements OnInit {
       },
       (error: any) => console.log(error, 'err')
     );
-  }
-
-  editMember(id: any) {
-    this.peopleService.getIdUser(id).subscribe((data) => {
-      this.addUserForm.patchValue(data);
-    })
   }
 }
 
