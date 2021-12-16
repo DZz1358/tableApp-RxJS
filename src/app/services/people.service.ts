@@ -20,12 +20,13 @@ export class PeopleService {
     return this.http.get(`${environment.apiUrl}/list`);
   }
 
-
   getIdUser(id: any) {
     return this.http.get(`${environment.apiUrl}/list/${id}`)
   }
 
-
+  updateUser(user: AddFormComponent, id: any): any {
+    return this.http.put(`${environment.apiUrl}/list/${id}`, user);
+  }
 
   deleteUser(id: any) {
     return this.http.delete(`${environment.apiUrl}/list/${id}`);
@@ -33,6 +34,3 @@ export class PeopleService {
 }
 
 
-  // updateUser(user: AddFormComponent, id: any): any {
-  //   return this.http.put(`${environment.apiUrl}/list/${id}`, user);
-  // }

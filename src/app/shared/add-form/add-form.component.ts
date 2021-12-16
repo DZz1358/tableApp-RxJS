@@ -1,5 +1,5 @@
 import { PeopleService } from './../../services/people.service';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -30,21 +30,34 @@ export class AddFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let userId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.peopleService.getIdUser(userId).subscribe((data) => {
+    const checkId = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(checkId);
+    this.getUserById(checkId);
+  }
+
+
+  getUserById(id: any) {
+    this.peopleService.getIdUser(id).subscribe((data) => {
       this.addUserForm.patchValue(data);
     })
   }
 
-
   onSubmit() {
-    this.peopleService.addUser(this.addUserForm.value).subscribe(
-      (data: any) => {
-        this.router.navigate(['/list']);
-
-      },
-      (error: any) => console.log(error, 'err')
-    );
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.peopleService.updateUser(this.addUserForm.value, id).subscribe(
+        (data: any) => {
+        },
+        (error: any) => console.log(error, 'err')
+      );
+    } else {
+      this.peopleService.addUser(this.addUserForm.value).subscribe(
+        (data: any) => {
+        },
+        (error: any) => console.log(error, 'err')
+      );
+    }
+    this.router.navigate(['/list']);
   }
 }
 

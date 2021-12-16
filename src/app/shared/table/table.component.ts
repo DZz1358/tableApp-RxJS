@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { PeopleService } from './../../services/people.service';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -17,7 +15,6 @@ export class TableComponent implements OnInit {
 
   constructor(
     private peopleService: PeopleService,
-    private http: HttpClient,
 
 
   ) { }
@@ -25,9 +22,13 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnChanges({ user }: SimpleChanges): void {
+    console.log(user);
+
+  }
+
   deleteUser(id: any) {
     this.peopleService.deleteUser(id).subscribe(data => {
-      window.location.reload();
     });
   }
 
