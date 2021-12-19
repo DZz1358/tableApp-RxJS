@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PeopleService } from './../../services/people.service';
 
 
@@ -7,7 +7,7 @@ import { PeopleService } from './../../services/people.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
   people = this.peopleService.getPeople();
 
   displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
@@ -15,15 +15,12 @@ export class TableComponent implements OnInit {
 
   constructor(
     private peopleService: PeopleService,
-
-
   ) { }
 
   ngOnInit(): void {
   }
 
-  ngOnChanges({ user }: SimpleChanges): void {
-    console.log(user);
+  ngOnChanges(changes: SimpleChanges): void {
 
   }
 

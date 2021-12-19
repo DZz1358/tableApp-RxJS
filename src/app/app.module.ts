@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
   { path: 'list', component: TableComponent },
-  { path: 'add', component: AddFormComponent },
+  { path: 'addUser', component: AddFormComponent },
   { path: 'add/:id', component: AddFormComponent }
 ]
 

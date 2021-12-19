@@ -29,12 +29,20 @@ export class AddFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) { }
 
+
   ngOnInit(): void {
-    const checkId = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(checkId);
-    this.getUserById(checkId);
+    this.createOrEdit()
   }
 
+
+  createOrEdit() {
+    const checkId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (checkId != null) {
+      this.getUserById(checkId);
+    } else {
+      return
+    }
+  }
 
   getUserById(id: any) {
     this.peopleService.getIdUser(id).subscribe((data) => {
