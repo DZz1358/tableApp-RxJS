@@ -8,9 +8,10 @@ import { PeopleService } from './../../services/people.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit, OnChanges {
-  people = this.peopleService.getPeople();
 
-  displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
+  public people = this.peopleService.getPeople();
+
+  public displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
 
 
   constructor(
@@ -18,6 +19,7 @@ export class TableComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
