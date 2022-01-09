@@ -19,7 +19,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddToListComponent } from './shared/add-to-list/add-to-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchComponent } from './shared/search/search.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
     BtnComponent,
     AddFormComponent,
     AddToListComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,
