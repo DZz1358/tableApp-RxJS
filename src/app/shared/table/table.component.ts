@@ -1,5 +1,5 @@
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { PeopleService } from './../../services/people.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,12 +24,11 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPeople();
+
   }
 
-
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getPeople() {
