@@ -1,7 +1,8 @@
 import { PeopleService } from './../../services/people.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-form',
@@ -10,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class AddFormComponent implements OnInit {
 
-  people = this.peopleService.getPeople();
+  user: any;
 
+  people = this.peopleService.getPeople();
 
   addUserForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -24,26 +26,46 @@ export class AddFormComponent implements OnInit {
   constructor(
     private peopleService: PeopleService,
     private router: Router,
-
+    private activatedRoute: ActivatedRoute,
   ) { }
 
+
   ngOnInit(): void {
+    this.createOrEdit()
   }
 
+
+  createOrEdit() {
+    const checkId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (checkId) {
+      this.getUserById(checkId);
+    }
+  }
+
+  getUserById(id: any) {
+    this.peopleService.getIdUser(id).subscribe((data) => {
+      this.addUserForm.patchValue(data);
+    })
+  }
 
   onSubmit() {
-    this.peopleService.addUser(this.addUserForm.value).subscribe(
-      (data: any) => {
-        this.router.navigate(['/list']);
-      },
-      (error: any) => console.log(error, 'err')
-    );
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.peopleService.updateUser(this.addUserForm.value, id).subscribe(
+        (data: any) => {
+          this.router.navigate(['/list']);
+        },
+        (error: any) => console.log(error, 'err')
+      );
+    } else {
+      this.peopleService.addUser(this.addUserForm.value).subscribe(
+        (data: any) => {
+          this.router.navigate(['/list']);
+        },
+        (error: any) => console.log(error, 'err')
+      );
+    }
   }
-  // setValues() {
-  //   this.addUserForm.patchValue({
-  //     FormGroup: this.updateUser.id
-  //   })
-  // }
-
-
 }
+
+

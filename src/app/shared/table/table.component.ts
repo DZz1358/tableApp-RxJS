@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { PeopleService } from './../../services/people.service';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -11,34 +12,41 @@ import { environment } from 'src/environments/environment';
 })
 export class TableComponent implements OnInit {
 
-  people = this.peopleService.getPeople();
+  public displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
+  public dataSource = new MatTableDataSource();
 
-  displayedColumns: string[] = ['id', 'name', 'Country', 'gender', 'createdAt', 'edit'];
-
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) matSort!: MatSort;
 
   constructor(
     private peopleService: PeopleService,
-    private http: HttpClient,
-
-
   ) { }
 
   ngOnInit(): void {
+    this.getPeople();
   }
 
-  deleteUser(id: any) {
-    console.log(id);
 
-    this.peopleService.deleteUser(id).subscribe(data => {
-      window.location.reload();
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getPeople() {
+    this.peopleService.getPeople().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.matSort;
     });
   }
 
-  updateUser(id: any) {
-    return this.http.get(`${environment.apiUrl}/list/${id}`).subscribe(data => {
-
+  deleteUser(id: any) {
+    this.peopleService.deleteUser(id).subscribe(data => {
+      this.getPeople();
       console.log(data);
     });
   }
 
+
 }
+

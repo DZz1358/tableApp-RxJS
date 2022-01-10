@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddToListComponent } from './shared/add-to-list/add-to-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
     TableComponent,
     BtnComponent,
     AddFormComponent,
-    AddToListComponent
+    AddToListComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     MatButtonModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
   ],
