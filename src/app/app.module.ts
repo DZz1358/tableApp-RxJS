@@ -21,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ModalInfoUserComponent } from './shared/modal-info-user/modal-info-user.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     BtnComponent,
     AddFormComponent,
     AddToListComponent,
+    ModalInfoUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +53,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     MatIconModule,
+    MatDialogModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [
   ],
