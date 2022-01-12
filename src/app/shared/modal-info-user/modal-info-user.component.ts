@@ -16,8 +16,6 @@ export class ModalInfoUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.receivedRow.data);
-
   }
 
 }

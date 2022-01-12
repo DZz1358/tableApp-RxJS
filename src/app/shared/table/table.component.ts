@@ -18,14 +18,11 @@ export class TableComponent implements OnInit {
 
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
-  q: any;
-
 
   constructor(
     private peopleService: PeopleService,
     private dialog: MatDialog,
   ) { }
-
 
   ngOnInit(): void {
     this.getPeople();
@@ -41,8 +38,6 @@ export class TableComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.matSort;
-      // console.log(this.dataSource.data);
-
     });
   }
 
@@ -53,19 +48,15 @@ export class TableComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    // let q = this.dataSource.data;
-    // console.log(q);
+  openDialog(name: string, Image: any) {
+    console.log(name);
 
     const dialogRef = this.dialog.open(ModalInfoUserComponent, {
       data: {
-        name: 'Adolf',
-
-        // name: this.q.name
+        name: name,
+        image: Image
       }
     });
-
   }
-
 }
 
