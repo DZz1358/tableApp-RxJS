@@ -1,7 +1,10 @@
-<div class="header">
-    <div routerLink="/list">
-        <span class="header-logo">Test form</span>
+<div class="header d-flex justify-content-between align-items-center">
+    <div routerLink="/list" class="d-flex align-items-center">
+        <img class="header-logo" src="https://angular.io/assets/images/logos/angular/angular.svg" alt="">
+        <span class="fw-normal fs-5 ">Materials</span>
     </div>
-    <app-btn></app-btn>
-    <app-add-to-list></app-add-to-list>
+    <div class="d-flex">
+        <app-btn></app-btn>
+        <app-add-to-list class="ms-3"></app-add-to-list>
+    </div>
 </div>

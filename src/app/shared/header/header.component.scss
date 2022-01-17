@@ -1,13 +1,14 @@
 .header {
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    padding: 10px 20px;
     background-color: slategray;
 }
 
 .header-logo {
-    font-size: 20px;
-    font-weight: 500;
-    color: white;
+    display: block;
+    width: 35px;
+    height: 35px;
+}
+
+span {
+    color: #fff;
 }
