@@ -13,6 +13,7 @@ import { ModalInfoUserComponent } from '../modal-info-user/modal-info-user.compo
 })
 export class TableComponent implements OnInit {
 
+  public country: string[] = this.peopleService.country
   public displayedColumns: string[] = ['id', 'name', 'country', 'gender', 'createdAt', 'edit'];
   public dataSource = new MatTableDataSource();
 
@@ -26,6 +27,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPeople();
+    console.log(this.peopleService.country);
 
   }
   applyFilter(event: Event) {

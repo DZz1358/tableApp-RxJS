@@ -1,3 +1,4 @@
+import { COUNTRY } from './../mocks/country.mock';
 import { AddFormComponent } from './../shared/add-form/add-form.component';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,6 +9,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PeopleService {
+
+  country = COUNTRY;
 
   constructor(
     private http: HttpClient,

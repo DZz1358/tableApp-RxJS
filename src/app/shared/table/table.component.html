@@ -1,6 +1,11 @@
 <mat-form-field appearance="outline" class="example-form-field">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input>
+    <input matInput (keyup)="applyFilter($event)" #input [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let item of country" [value]="item">
+            {{item}}
+        </mat-option>
+    </mat-autocomplete>
     <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
 

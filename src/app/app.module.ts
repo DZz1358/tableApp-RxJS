@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatTableModule } from '@angular/material/table'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ModalInfoUserComponent } from './shared/modal-info-user/modal-info-user.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
@@ -56,6 +58,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatPaginatorModule,
     MatSortModule,
+    NgxMatSelectSearchModule,
+    MatAutocompleteModule,
   ],
   providers: [
   ],
