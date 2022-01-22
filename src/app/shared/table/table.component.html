@@ -1,8 +1,8 @@
 <mat-form-field appearance="outline" class="example-form-field">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input [matAutocomplete]="auto">
+    <input matInput (keyup)="applyFilter($event)" #input [matAutocomplete]="auto" [formControl]="myControl">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let item of country" [value]="item">
+        <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
             {{item}}
         </mat-option>
     </mat-autocomplete>
