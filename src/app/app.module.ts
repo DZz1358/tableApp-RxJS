@@ -9,7 +9,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { Routes, RouterModule } from '@angular/router';
 
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/header/header.component';
@@ -24,7 +23,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ModalInfoUserComponent } from './shared/modal-info-user/modal-info-user.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 const appRoutes: Routes = [
   { path: '', component: TableComponent },
@@ -58,7 +56,6 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatPaginatorModule,
     MatSortModule,
-    NgxMatSelectSearchModule,
     MatAutocompleteModule,
   ],
   providers: [

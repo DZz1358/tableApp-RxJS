@@ -5,7 +5,14 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Country</mat-label>
-        <input matInput placeholder="Country" formControlName="country">
+        <input matInput placeholder="Country" formControlName="country" [matAutocomplete]="auto"
+            [formControl]="myControl">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
+                {{item}}
+            </mat-option>
+        </mat-autocomplete>
+
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Gender</mat-label>

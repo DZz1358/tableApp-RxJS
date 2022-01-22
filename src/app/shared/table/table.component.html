@@ -1,11 +1,6 @@
 <mat-form-field appearance="outline" class="example-form-field">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input [matAutocomplete]="auto" [formControl]="myControl">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
-            {{item}}
-        </mat-option>
-    </mat-autocomplete>
+    <input matInput (keyup)="applyFilter($event)" #input>
     <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
 
@@ -42,7 +37,6 @@
             <button [routerLink]="['/add' , element.id ]" class="btn-table" mat-mini-fab color="primary">
                 <mat-icon>edit</mat-icon>
             </button>
-
             <button (click)="deleteUser(element.id)" class="btn-table" mat-mini-fab color="primary">
                 <mat-icon>delete</mat-icon>
             </button>
@@ -57,5 +51,5 @@
     </tr>
 
 </table>
-<mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[2, 5, 10, 25, 100]" aria-label="Select page">
+<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[2, 5, 10, 25, 100]" aria-label="Select page">
 </mat-paginator>

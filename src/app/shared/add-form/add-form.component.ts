@@ -2,6 +2,8 @@ import { PeopleService } from './../../services/people.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 
 @Component({
@@ -11,8 +13,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddFormComponent implements OnInit {
 
-  user: any;
+  public country: string[] = this.peopleService.country
 
+  myControl = new FormControl();
+  filteredOptions!: Observable<string[]>;
+  user: any;
   people = this.peopleService.getPeople();
 
   addUserForm = new FormGroup({
@@ -29,11 +34,18 @@ export class AddFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) { }
 
-
   ngOnInit(): void {
     this.createOrEdit()
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)),
+    );
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.country.filter(option => option.toLowerCase().includes(filterValue));
+  }
 
   createOrEdit() {
     const checkId = this.activatedRoute.snapshot.paramMap.get('id');

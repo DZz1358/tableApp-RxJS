@@ -5,9 +5,6 @@ import { PeopleService } from './../../services/people.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalInfoUserComponent } from '../modal-info-user/modal-info-user.component';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table',
@@ -16,12 +13,8 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class TableComponent implements OnInit {
 
-  public country: string[] = this.peopleService.country
   public displayedColumns: string[] = ['id', 'name', 'country', 'gender', 'createdAt', 'edit'];
   public dataSource = new MatTableDataSource();
-
-  myControl = new FormControl();
-  filteredOptions!: Observable<string[]>;
 
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
@@ -33,16 +26,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPeople();
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.country.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   applyFilter(event: Event) {
