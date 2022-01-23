@@ -44,13 +44,10 @@ export class TableComponent implements OnInit {
   deleteUser(id: any) {
     this.peopleService.deleteUser(id).subscribe(data => {
       this.getPeople();
-      console.log(data);
     });
   }
 
   openDialog(name: string, Image: any) {
-    console.log(name);
-
     const dialogRef = this.dialog.open(ModalInfoUserComponent, {
       data: {
         name: name,

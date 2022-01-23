@@ -37,14 +37,15 @@
             <button [routerLink]="['/add' , element.id ]" class="btn-table" mat-mini-fab color="primary">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button (click)="deleteUser(element.id)" class="btn-table" mat-mini-fab color="primary">
+            <button (click)="deleteUser(element.id)" (click)="$event.stopPropagation()" class="btn-table" mat-mini-fab
+                color="primary">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr (click)="openDialog(row.name, row.image)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr (click)="openDialog(row.name, row.image )" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
